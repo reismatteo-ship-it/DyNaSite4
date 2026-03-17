@@ -3,107 +3,125 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Stablecoins | Architecture, Risques & Régulation</title>
+    <title>STABLECOIN SYSTEMS | INSTITUTIONAL REPORT 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@200;300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@200;300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
     <style>
         :root {
             --primary: #e31937; 
             --bg: #050505;
             --surface: #0f0f0f;
+            --surface-accent: #161616;
             --border: rgba(255, 255, 255, 0.1);
             --text: #ffffff;
-            --text-muted: #a0a0a0;
+            --text-muted: #888888;
             --font-main: 'Inter', sans-serif;
             --font-title: 'Sora', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
+        /* RESET & BASE */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { 
             background: var(--bg); 
             color: var(--text); 
             font-family: var(--font-main); 
-            line-height: 1.6;
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
-        h1, h2, h3 { font-family: var(--font-title); text-transform: uppercase; letter-spacing: -0.02em; }
-        p { font-weight: 300; margin-bottom: 1rem; }
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4, h5 { font-family: var(--font-title); text-transform: uppercase; letter-spacing: -0.03em; font-weight: 800; }
+        p { font-weight: 300; margin-bottom: 1.5rem; color: var(--text-muted); text-align: justify; font-size: 0.95rem; }
+        strong { color: var(--text); font-weight: 600; }
+        .mono { font-family: var(--font-mono); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
 
+        /* HEADER */
         .header {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(20px);
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(30px);
             border-bottom: 1px solid var(--border);
             display: flex; align-items: center; justify-content: space-between;
-            padding: 0 4%; height: 80px;
+            padding: 0 4%; height: 75px;
         }
-        .logo { font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+        .logo { font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; border-left: 3px solid var(--primary); padding-left: 15px; }
         .logo span { color: var(--primary); }
         
-        .nav-links { display: flex; gap: 20px; overflow-x: auto; scrollbar-width: none; }
+        .nav-links { display: flex; gap: 15px; overflow-x: auto; scrollbar-width: none; }
         .nav-links::-webkit-scrollbar { display: none; }
         .nav-links a {
-            text-decoration: none; color: var(--text-muted); font-size: 0.7rem;
-            font-weight: 600; text-transform: uppercase; transition: 0.3s;
-            white-space: nowrap; padding: 5px 0; border-bottom: 2px solid transparent;
+            text-decoration: none; color: var(--text-muted); font-size: 0.65rem;
+            font-weight: 700; text-transform: uppercase; transition: 0.3s;
+            white-space: nowrap; padding: 10px 0; border-bottom: 2px solid transparent;
         }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); border-bottom-color: var(--primary); }
 
-        section { padding: 140px 8% 100px; min-height: 100vh; border-bottom: 1px solid var(--border); }
+        /* LAYOUT COMPONENTS */
+        section { padding: 140px 8% 120px; min-height: 100vh; border-bottom: 1px solid var(--border); }
         .container { max-width: 1400px; margin: 0 auto; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+        
+        /* CARDS */
+        .card { 
+            background: var(--surface); padding: 50px; border: 1px solid var(--border); 
+            position: relative; transition: 0.4s;
+        }
+        .card:hover { border-color: rgba(227, 25, 55, 0.4); background: #0c0c0c; }
+        .card h3 { margin-bottom: 20px; font-size: 1.4rem; color: var(--text); }
+        .card .sec-num { color: var(--primary); margin-bottom: 15px; display: block; font-weight: 700; }
 
+        .analysis-block { 
+            background: var(--surface-accent); border-left: 2px solid var(--primary); 
+            padding: 40px; margin: 50px 0; 
+        }
+        .analysis-block h4 { font-size: 0.9rem; color: var(--primary); margin-bottom: 15px; }
+
+        /* TABLES */
+        .table-container { overflow-x: auto; margin: 60px 0; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; background: var(--surface); text-align: left; }
+        th { padding: 25px; background: #111; color: var(--primary); font-size: 0.75rem; text-transform: uppercase; border-bottom: 2px solid var(--primary); }
+        td { padding: 25px; border-bottom: 1px solid var(--border); font-size: 0.85rem; color: var(--text-muted); }
+        tr:hover td { color: var(--text); background: rgba(255,255,255,0.02); }
+
+        /* HERO */
         #home { 
             height: 100vh; display: flex; align-items: center; 
-            background: radial-gradient(circle at 90% 10%, #2a0a0a 0%, #050505 50%);
+            background: linear-gradient(135deg, #050505 0%, #1a0505 100%);
+            position: relative;
         }
-        .hero-content h1 { font-size: clamp(3.5rem, 9vw, 7rem); line-height: 0.85; margin-bottom: 30px; }
-        .hero-content .accent { color: var(--primary); }
-        .hero-desc { max-width: 700px; font-size: 1.3rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 200; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .card { 
-            background: var(--surface); padding: 40px; border: 1px solid var(--border); 
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card:hover { border-color: var(--primary); background: #111; }
-        .card h3 { margin-bottom: 20px; font-size: 1.2rem; color: var(--primary); }
-        .card ul { list-style: none; color: var(--text-muted); font-size: 0.9rem; }
-        .card li { margin-bottom: 8px; padding-left: 15px; position: relative; }
-        .card li::before { content: "//"; position: absolute; left: 0; color: var(--primary); font-size: 0.7rem; }
+        .hero-title { font-size: clamp(4rem, 12vw, 9rem); line-height: 0.8; margin-bottom: 30px; }
+        .hero-title span { color: var(--primary); }
+        .hero-sub { max-width: 900px; font-size: 1.5rem; color: var(--text-muted); font-weight: 200; }
 
-        .sec-num { color: var(--primary); font-family: 'JetBrains Mono'; font-size: 0.85rem; margin-bottom: 15px; display: block; letter-spacing: 2px; }
-        
-        .timeline-item { border-left: 1px solid var(--primary); padding-left: 35px; margin-bottom: 50px; position: relative; }
-        .timeline-item::before { content: ''; position: absolute; left: -5px; top: 0; width: 10px; height: 10px; background: var(--primary); }
-        .timeline-year { font-family: 'Sora'; font-weight: 800; font-size: 1.5rem; margin-bottom: 10px; display: block; }
+        /* TIMELINE */
+        .timeline { margin-top: 80px; position: relative; }
+        .timeline-item { border-left: 1px solid var(--primary); padding: 0 0 60px 40px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -6px; top: 0; width: 11px; height: 11px; background: var(--primary); }
+        .timeline-date { font-family: var(--font-mono); color: var(--primary); font-size: 1.2rem; margin-bottom: 10px; display: block; }
 
-        table { width: 100%; border-collapse: collapse; margin-top: 50px; font-size: 0.85rem; background: var(--surface); }
-        th { text-align: left; padding: 25px; color: var(--primary); border-bottom: 2px solid var(--primary); text-transform: uppercase; letter-spacing: 1px; }
-        td { padding: 25px; border-bottom: 1px solid var(--border); }
-        tr:hover { background: rgba(227, 25, 55, 0.05); }
+        /* LISTS */
+        .tech-list { list-style: none; }
+        .tech-list li { margin-bottom: 20px; padding-left: 25px; position: relative; }
+        .tech-list li::before { content: '>'; position: absolute; left: 0; color: var(--primary); font-weight: 800; }
 
-        .highlight-box { 
-            border-left: 4px solid var(--primary); background: rgba(227, 25, 55, 0.03); 
-            padding: 40px; margin: 40px 0; 
-        }
+        /* FOOTER */
+        footer { padding: 120px 8% 60px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); opacity: 0.6; }
 
-        footer { padding: 80px 8%; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
+        @media (max-width: 1024px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
             section { padding: 100px 5%; }
-            .hero-content h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
 
 <header class="header">
-    <div class="logo">RDW <span>//</span> STABLECOINS</div>
+    <div class="logo">RDW <span>//</span> STABLECOIN REPORT</div>
     <nav class="nav-links">
-        <a href="#home">Accueil</a>
+        <a href="#home">Intro</a>
         <a href="#def">Définition</a>
         <a href="#mec">Mécanismes</a>
         <a href="#mar">Marché</a>
@@ -117,47 +135,50 @@
 
 <main>
     <section id="home">
-        <div class="container hero-content">
-            <span class="sec-num">M2 FINANCE // IAE // 2025-2026</span>
-            <h1>L'ÈRE DE LA <span class="accent">STABILITÉ</span> NUMÉRIQUE</h1>
-            <p class="hero-desc">Analyse exhaustive des stablecoins : de l'ingénierie des protocoles décentralisés aux nouveaux cadres réglementaires MiCA.</p>
-            <button onclick="location.href='#def'" style="background:var(--primary); color:white; border:none; padding:20px 50px; font-weight:800; cursor:pointer; text-transform:uppercase; letter-spacing:2px; transition:0.3s;">Démarrer l'audit</button>
+        <div class="container">
+            <p class="mono" style="color: var(--primary); margin-bottom: 20px;">Master 2 Finance // IAE // Year 2026</p>
+            <h1 class="hero-title">FIXED<br><span>VALUE</span><br>SYSTEMS</h1>
+            <p class="hero-sub">Étude structurelle des actifs numériques à parité fixe et de leur intégration dans l'infrastructure financière globale.</p>
         </div>
     </section>
 
     <section id="def">
         <div class="container">
-            <span class="sec-num">01 // ONTOLOGIE ET GENÈSE</span>
-            <h2 style="font-size:3.5rem; margin-bottom:50px;">Nature des Stablecoins</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Le Pivot de l'Écosystème</h3>
-                    <p>Un stablecoin est un actif numérique conçu pour maintenir une parité fixe avec un actif externe (PEG). Il agit comme une "monnaie de règlement" dans l'univers on-chain.</p>
-                    <ul>
-                        <li>Ancrage fiduciaire (USD, EUR)</li>
-                        <li>Ancrage commodités (Or, Argent)</li>
-                        <li>Ancrage algorithmique (Offre/Demande)</li>
-                    </ul>
+            <span class="mono" style="color: var(--primary);">01 // FONDATIONS SYSTÉMIQUES</span>
+            <h2 style="font-size: 3.5rem; margin-top: 20px; margin-bottom: 50px;">Nature des Stablecoins</h2>
+            
+            <div class="grid-2">
+                <div>
+                    <p>Un <strong>stablecoin</strong> est une construction cryptographique conçue pour atténuer la volatilité endémique des actifs numériques en indexant sa valeur sur un actif de référence externe. Contrairement aux monnaies de compte classiques, le stablecoin est un <em>instrument de transport de valeur</em> doté d'une programmabilité native.</p>
+                    <p>Dans l'architecture financière moderne, ils remplissent le rôle de <strong>liquidité de base</strong>. Ils permettent le dénouement de transactions complexes sans quitter l'écosystème distribué (On-chain), évitant ainsi les délais de règlement du système bancaire traditionnel (Settlement Finality).</p>
                 </div>
-                <div class="card">
-                    <h3>L'Analogie du Vestiaire</h3>
-                    <p>Le stablecoin est un "titre de créance" numérique. En déposant 1€, vous recevez un jeton (le ticket) qui garantit la récupération de l'euro initial à tout moment.</p>
+                <div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 20px;">L'Ancrage (The Peg)</h3>
+                    <p>L'ancrage est maintenu par un ensemble complexe d'incitations économiques. Pour un stablecoin indexé sur le dollar (USD), la valeur doit osciller dans une fourchette extrêmement étroite, typiquement entre 0.999$ et 1.001$. Tout écart prolongé (Depeg) déclenche des mécanismes d'arbitrage automatisés ou des interventions de l'émetteur.</p>
                 </div>
             </div>
 
-            <div style="margin-top:100px;">
-                <span class="sec-num">ÉVOLUTION HISTORIQUE</span>
+            <div class="analysis-block">
+                <h4>FOCUS ACADÉMIQUE : LE TRILEMME DES STABLECOINS</h4>
+                <p>À l'instar du trilemme de la blockchain, les stablecoins font face à trois objectifs contradictoires : <strong>1. Stabilité du prix</strong> (capacité à maintenir l'ancrage), <strong>2. Décentralisation</strong> (absence d'autorité centrale contrôlant les fonds), et <strong>3. Efficacité du capital</strong> (quantité de collatéral nécessaire pour émettre 1 unité). Actuellement, aucun protocole n'a parfaitement résolu les trois simultanément.</p>
+            </div>
+
+            <div class="timeline">
                 <div class="timeline-item">
-                    <span class="timeline-year">2014</span>
-                    <strong>L'avènement de Tether (USDT) :</strong> Création de la première infrastructure de "pseudo-dollar" permettant aux exchanges de s'affranchir des contraintes bancaires traditionnelles.
+                    <span class="timeline-date">2014 // L'INNOVATION TETHER</span>
+                    <p>Lancement de Tether (USDT) par Tether Limited. Utilisation du protocole Omni sur Bitcoin. Introduction du concept de "Proof of Reserves". Ce moment marque la naissance du marché inter-exchanges moderne.</p>
                 </div>
                 <div class="timeline-item">
-                    <span class="timeline-year">2018</span>
-                    <strong>L'innovation MakerDAO (DAI) :</strong> Premier modèle de stabilité sans autorité centrale, utilisant des contrats intelligents pour gérer la collatéralisation en ETH.
+                    <span class="timeline-date">2017 // L'AVÈNEMENT DE LA DEFI</span>
+                    <p>Lancement de MakerDAO et du DAI. Introduction de la sur-collatéralisation on-chain. Le stablecoin devient un produit de la gouvernance décentralisée et du code informatique, libéré des intermédiaires bancaires.</p>
                 </div>
                 <div class="timeline-item">
-                    <span class="timeline-year">2022</span>
-                    <strong>Le choc systémique Terra :</strong> La chute de l'UST (40 Mds$ évaporés) marque la fin de l'innocence pour les modèles algorithmiques non-collatéralisés.
+                    <span class="timeline-date">2022 // LA CRISE ALGORITHMIQUE</span>
+                    <p>Effondrement du protocole Terra (UST). Une perte de confiance massive entraîne une spirale de mort. 40 milliards de dollars disparaissent, forçant les régulateurs mondiaux à accélérer la mise en place de cadres restrictifs.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">2024 // L'ÈRE RÉGLEMENTAIRE</span>
+                    <p>Entrée en vigueur de MiCA en Europe. Les stablecoins sont désormais reconnus juridiquement comme des "E-Money Tokens" ou des "Asset-Referenced Tokens", avec des obligations strictes de réserves et d'audits.</p>
                 </div>
             </div>
         </div>
@@ -165,238 +186,323 @@
 
     <section id="mec">
         <div class="container">
-            <span class="sec-num">02 // ARCHITECTURE TECHNIQUE</span>
-            <h2 style="font-size:3.5rem; margin-bottom:50px;">Ingénierie de la Stabilité</h2>
-            <div class="grid">
+            <span class="mono" style="color: var(--primary);">02 // INGÉNIERIE DE LA STABILITÉ</span>
+            <h2 style="font-size: 3.5rem; margin-top: 20px; margin-bottom: 50px;">Taxonomie des Mécanismes</h2>
+
+            <div class="grid-3">
                 <div class="card">
-                    <h3>Off-Chain Collateralized</h3>
-                    <p>Modèle centralisé reposant sur des réserves physiques (Cash, T-Bills).</p>
-                    <ul>
-                        <li>Exemples : USDT, USDC, PYUSD</li>
-                        <li>Auditabilité : Rapports d'attestation tiers</li>
-                        <li>Risque : Censure et faillite de l'émetteur</li>
+                    <span class="sec-num">TYPE 01</span>
+                    <h3>Fiat-Collateralized</h3>
+                    <p>Modèle le plus adopté (USDT, USDC). Chaque jeton est adossé à 1$ de réserve réelle (cash ou équivalent) détenu en banque.</p>
+                    <ul class="tech-list">
+                        <li class="mono">Efficacité : 100%</li>
+                        <li class="mono">Risque : Centralisation</li>
+                        <li class="mono">Audit : Externe requis</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <h3>On-Chain Collateralized</h3>
-                    <p>Utilisation d'autres actifs cryptographiques comme garantie via des coffres-forts numériques (CDP).</p>
-                    <ul>
-                        <li>Mécanisme : Sur-collatéralisation (souvent >150%)</li>
-                        <li>Exemple : DAI (MakerDAO)</li>
-                        <li>Risque : Volatilité brutale du collatéral</li>
+                    <span class="sec-num">TYPE 02</span>
+                    <h3>Crypto-Collateralized</h3>
+                    <p>Modèle décentralisé (DAI). Adossé à des cryptomonnaies volatiles. Nécessite une sur-collatéralisation (ex: 150%).</p>
+                    <ul class="tech-list">
+                        <li class="mono">Efficacité : ~66%</li>
+                        <li class="mono">Risque : Liquidation</li>
+                        <li class="mono">Audit : On-chain (Code)</li>
                     </ul>
                 </div>
-                <div class="card" style="border-color: #333;">
-                    <h3>Seigniorage / Algo</h3>
-                    <p>Utilisation d'incitations économiques et d'algorithmes pour ajuster l'offre monétaire.</p>
-                    <ul>
-                        <li>Concept : "Mint & Burn" bidirectionnel</li>
-                        <li>Exemple : Frax (hybride), Terra (échec)</li>
-                        <li>Risque : Spirale de la mort (Bank run)</li>
+                <div class="card">
+                    <span class="sec-num">TYPE 03</span>
+                    <h3>Algorithmic / Seniorage</h3>
+                    <p>Aucun collatéral direct. La stabilité est gérée par des algorithmes qui ajustent l'offre selon la demande (Expansion/Contraction).</p>
+                    <ul class="tech-list">
+                        <li class="mono">Efficacité : >100%</li>
+                        <li class="mono">Risque : Panique systémique</li>
+                        <li class="mono">Audit : Public (Algorithme)</li>
                     </ul>
                 </div>
+            </div>
+
+            <div class="analysis-block">
+                <h4>DÉTAIL TECHNIQUE : LES MÉCANISMES D'ARBITRAGE</h4>
+                <p>L'ancrage ne tient pas par magie, mais par l'avidité des acteurs de marché. Si l'USDC tombe à 0.99$, les arbitragistes l'achètent massivement pour le racheter à 1.00$ auprès de Circle, empochant 1% de profit. Cette pression acheteuse ramène le prix à 1$. À l'inverse, si le prix monte à 1.01$, ils créent de nouveaux jetons pour 1$ et les revendent sur le marché pour 1.01$, augmentant l'offre et faisant baisser le prix.</p>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Paramètre</th>
+                            <th>Fiat-Backed</th>
+                            <th>Crypto-Backed</th>
+                            <th>Algorithmique</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Confiance repose sur</strong></td>
+                            <td>L'émetteur et les banques</td>
+                            <td>Le Smart Contract et le code</td>
+                            <td>La pérennité de la demande</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vitesse d'émission</strong></td>
+                            <td>Lente (dépend du virement fiat)</td>
+                            <td>Instantanée (On-chain)</td>
+                            <td>Instantanée (Algorithmée)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Censurabilité</strong></td>
+                            <td>Haute (Gel possible des adresses)</td>
+                            <td>Faible (Décentralisé)</td>
+                            <td>Nulle (Résistant à la censure)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Exemple phare</strong></td>
+                            <td>USDC (Circle)</td>
+                            <td>DAI (MakerDAO)</td>
+                            <td>FRAX (Hybride)</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
 
     <section id="mar">
         <div class="container">
-            <span class="sec-num">03 // DYNAMIQUE SECTORIELLE</span>
-            <h2 style="font-size:3.5rem; margin-bottom:50px;">Analyse Quantitative</h2>
-            <div class="highlight-box">
-                <div class="grid" style="text-align:center;">
-                    <div>
-                        <div style="font-size:4rem; font-weight:800; color:var(--primary);">~230B$</div>
-                        <p class="sec-num">MARKET CAP GLOBALE</p>
-                    </div>
-                    <div>
-                        <div style="font-size:4rem; font-weight:800;">67%</div>
-                        <p class="sec-num">DOMINANCE TETHER</p>
-                    </div>
+            <span class="mono" style="color: var(--primary);">03 // ANALYSE DE L'ÉCOSYSTÈME</span>
+            <h2 style="font-size: 3.5rem; margin-top: 20px; margin-bottom: 50px;">Dynamiques de Marché</h2>
+            
+            <p>Le marché des stablecoins s'est consolidé autour de deux acteurs majeurs qui contrôlent plus de 85% de la liquidité mondiale. Cette concentration soulève des questions sur le risque de point de défaillance unique (Single Point of Failure).</p>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Tether (USDT) : L'Hégémonie Offshore</h3>
+                    <p>Avec une capitalisation dépassant les 120 milliards de dollars, Tether est le pivot du commerce de crypto-actifs, particulièrement sur les marchés émergents et les bourses non-américaines. Sa rentabilité est devenue colossale grâce aux intérêts générés par ses réserves en bons du Trésor US.</p>
+                </div>
+                <div class="card">
+                    <h3>Circle (USDC) : Le Standard Régulé</h3>
+                    <p>Favorisé par les institutions financières traditionnelles et les régulateurs, l'USDC met l'accent sur la transparence totale. Ses réserves sont auditées mensuellement par des cabinets de premier rang (Deloitte), ce qui en fait l'outil de prédilection pour la finance institutionnelle.</p>
                 </div>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Actif</th>
-                        <th>Type</th>
-                        <th>Transparence</th>
-                        <th>Positionnement</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>USDT (Tether)</strong></td>
-                        <td>Fiat-Backed</td>
-                        <td>Attestations trimestrielles</td>
-                        <td>Liquidité majeure sur les bourses asiatiques et offshore.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>USDC (Circle)</strong></td>
-                        <td>Fiat-Backed</td>
-                        <td>Audits mensuels (Deloitte)</td>
-                        <td>Standard institutionnel et conformité réglementaire US.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>DAI (Maker)</strong></td>
-                        <td>Crypto/RWA</td>
-                        <td>Preuve on-chain temps réel</td>
-                        <td>Infrastructure centrale de la finance décentralisée (DeFi).</td>
-                    </tr>
-                    <tr>
-                        <td><strong>PYUSD (PayPal)</strong></td>
-                        <td>Fiat-Backed</td>
-                        <td>Régulé (NYDFS)</td>
-                        <td>Passerelle entre paiements Web2 et écosystème Web3.</td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <div class="analysis-block">
+                <h4>DATA INSIGHT : LES RÉSERVES EN BONS DU TRÉSOR</h4>
+                <p>En 2026, les émetteurs de stablecoins sont devenus les 15èmes plus gros détenteurs mondiaux de dette américaine (T-Bills), devant de nombreux pays souverains. Cela crée une interconnexion inédite : une crise majeure des stablecoins pourrait théoriquement impacter la liquidité du marché obligataire américain.</p>
+            </div>
         </div>
     </section>
 
     <section id="usa">
         <div class="container">
-            <span class="sec-num">04 // VECTEURS D'ADOPTION</span>
-            <h2 style="font-size:3.5rem; margin-bottom:50px;">Cas d'Usage Stratégiques</h2>
-            <div class="grid">
+            <span class="mono" style="color: var(--primary);">04 // VECTEURS D'UTILITÉ</span>
+            <h2 style="font-size: 3.5rem; margin-top: 20px; margin-bottom: 50px;">Cas d'Usage Stratégiques</h2>
+
+            <div class="grid-3">
                 <div class="card">
-                    <h3>Remittances (Transferts)</h3>
-                    <p>Réduction des coûts de transfert internationaux. Là où SWIFT prend 3 jours et 5% de frais, le stablecoin opère en 15 secondes pour quelques centimes.</p>
+                    <h3>Remittances</h3>
+                    <p>Transfert de fonds transfrontaliers quasi-gratuits et instantanés. Une alternative majeure à SWIFT pour les travailleurs expatriés (ex: transferts vers l'Afrique ou l'Amérique Latine).</p>
                 </div>
                 <div class="card">
-                    <h3>Protection contre l'Inflation</h3>
-                    <p>Dans des économies comme l'Argentine ou la Turquie, les stablecoins servent de "coffre-fort dollar" accessible sur smartphone.</p>
+                    <h3>DeFi (Yield)</h3>
+                    <p>Les stablecoins servent de monnaie de base pour générer des rendements (Yield Farming) via des protocoles de prêt décentralisés comme Aave ou Compound.</p>
                 </div>
                 <div class="card">
-                    <h3>RWA (Real World Assets)</h3>
-                    <p>Convergence avec la finance classique : utilisation de stablecoins pour acheter des fractions d'immobilier ou de bons du trésor tokenisés.</p>
+                    <h3>Paiements B2B</h3>
+                    <p>Règlement de factures internationales entre entreprises sans passer par les correspondants bancaires, réduisant les délais de 3 jours à 10 secondes.</p>
                 </div>
+            </div>
+
+            <div class="analysis-block">
+                <h4>L'ÉMERGENCE DU COMMERCE RETAIL</h4>
+                <p>L'intégration des stablecoins dans les terminaux de paiement classiques (via Visa et Mastercard) permet désormais d'acheter des biens de consommation courante. Le commerçant reçoit des stablecoins instantanément, évitant les frais de "chargeback" et les délais de compensation bancaire.</p>
             </div>
         </div>
     </section>
 
     <section id="ris">
         <div class="container">
-            <span class="sec-num">05 // GESTION DES RISQUES</span>
-            <h2 style="font-size:3.5rem; margin-bottom:50px;">Analyse de Fragilité</h2>
-            <div class="grid">
-                <div class="card" style="border-top: 5px solid var(--primary);">
-                    <h3>Risque de Réserve</h3>
-                    <p>Le risque que les actifs censés garantir le stablecoin (T-Bills, cash) perdent de la valeur ou soient gelés.</p>
+            <span class="mono" style="color: var(--primary);">05 // MATRICE DES VULNÉRABILITÉS</span>
+            <h2 style="font-size: 3.5rem; margin-top: 20px; margin-bottom: 50px;">Analyse de Risque Systémique</h2>
+            
+            <p>L'apparente stabilité des stablecoins masque des risques structurels profonds qui peuvent se manifester violemment en période de stress de marché.</p>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Risque de Réserve & Solvabilité</h3>
+                    <p>Le risque que les actifs de réserve (cash, titres) ne soient pas suffisants ou ne puissent pas être liquidés assez rapidement lors d'un "bank run". Si l'émetteur a investi dans des actifs risqués, le rachat 1:1 n'est plus garanti.</p>
                 </div>
-                <div class="card" style="border-top: 5px solid var(--primary);">
-                    <h3>Risque Technologique</h3>
-                    <p>Bugs dans les contrats intelligents ou vulnérabilités de la blockchain hôte (Ethereum, Solana, etc.).</p>
+                <div class="card">
+                    <h3>Risque de Censure & Centralisation</h3>
+                    <p>Contrairement au Bitcoin, les stablecoins fiat-backed peuvent être "gelés" à distance par l'émetteur sur demande des autorités. Cela pose un risque pour la neutralité de la monnaie numérique.</p>
                 </div>
-                <div class="card" style="border-top: 5px solid var(--primary);">
-                    <h3>Dépendance Bancaire</h3>
-                    <p>Comme vu avec l'affaire SVB, la faillite d'une banque partenaire peut entraîner un "depeg" temporaire du stablecoin.</p>
+                <div class="card">
+                    <h3>Risque de Contagion Bancaire</h3>
+                    <p>Comme démontré lors de la chute de la Silicon Valley Bank (SVB) en 2023, la faillite d'une banque partenaire peut déstabiliser un stablecoin, même si celui-ci est parfaitement géré, par simple interconnexion financière.</p>
+                </div>
+                <div class="card">
+                    <h3>Risque de Smart Contract</h3>
+                    <p>Pour les modèles décentralisés (DAI), une faille dans le code informatique peut permettre le vol des collatéraux ou la création infinie de jetons, détruisant instantanément la parité.</p>
                 </div>
             </div>
-            <div class="highlight-box" style="margin-top:50px;">
-                <strong>Note de crise :</strong> L'effondrement de Terra (UST) a prouvé que sans collatéral externe, la confiance peut s'évaporer totalement en moins de 48 heures.
+
+            <div class="analysis-block" style="border-color: #ff5252; background: rgba(255,82,82,0.05);">
+                <h4 style="color: #ff5252;">ALERTE : LE RISQUE D'ORACLE</h4>
+                <p>Les stablecoins décentralisés dépendent d'oracles (flux de données externes) pour connaître le prix des collatéraux. Si un oracle est manipulé ou s'arrête, le protocole peut liquider des utilisateurs à tort ou ne pas voir que le système est devenu insolvable. C'est l'un des points de défaillance les plus critiques de la DeFi.</p>
             </div>
         </div>
     </section>
 
     <section id="reg">
         <div class="container">
-            <span class="sec-num">06 // CADRE JURIDIQUE</span>
-            <h2 style="font-size:3.5rem; margin-bottom:50px;">L'Impulsion MiCA</h2>
-            <div class="grid">
+            <span class="mono" style="color: var(--primary);">06 // CADRE JURIDIQUE</span>
+            <h2 style="font-size: 3.5rem; margin-top: 20px; margin-bottom: 50px;">Régulation MiCA et Normes Globales</h2>
+            
+            <div class="grid-2">
                 <div>
-                    <h3 style="color:var(--primary); margin-bottom:20px;">Règlement Européen (MiCA)</h3>
-                    <p>Entré en vigueur pour les stablecoins en juin 2024, il crée deux catégories :</p>
-                    <ul style="list-style:none; padding:0;">
-                        <li style="margin-bottom:15px;"><strong>EMT (E-Money Tokens) :</strong> Indexés sur une seule devise officielle.</li>
-                        <li style="margin-bottom:15px;"><strong>ART (Asset-Referenced Tokens) :</strong> Indexés sur plusieurs actifs ou commodités.</li>
-                    </ul>
+                    <h3>L'Europe en Pionnière</h3>
+                    <p>Le règlement <strong>Markets in Crypto-Assets (MiCA)</strong> impose des standards drastiques : obligations de détenir des réserves liquides à 100%, interdiction de verser des intérêts sur les stablecoins (pour ne pas concurrencer les dépôts bancaires), et droit de rachat immédiat pour les détenteurs.</p>
+                    <p>Les émetteurs "significatifs" sont supervisés directement par l'Autorité Bancaire Européenne (EBA) et non plus par les régulateurs nationaux.</p>
                 </div>
                 <div class="card">
-                    <h3>Exigences de l'EBA</h3>
-                    <p>Les émetteurs "significatifs" doivent maintenir des fonds propres élevés, des réserves liquides à 100% et subir des stress-tests réguliers.</p>
+                    <h3>Conséquences pour le Marché</h3>
+                    <ul class="tech-list">
+                        <li>Retrait des stablecoins non-conformes des plateformes EU.</li>
+                        <li>Transparence accrue sur la composition des réserves.</li>
+                        <li>Responsabilité civile des émetteurs en cas de perte.</li>
+                        <li>Standardisation des "White Papers".</li>
+                    </ul>
                 </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Juridiction</th>
+                            <th>Statut Réglementaire</th>
+                            <th>Approche Clé</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Union Européenne</strong></td>
+                            <td>Opérationnel (MiCA)</td>
+                            <td>Agrément obligatoire, réserves 1:1 strictes.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>États-Unis</strong></td>
+                            <td>En débat (Stablecoin Bill)</td>
+                            <td>Focus sur la protection des consommateurs et la Fed.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Singapour</strong></td>
+                            <td>Actif (MAS Framework)</td>
+                            <td>Exigences de capital minimum et audits publics.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hong Kong</strong></td>
+                            <td>Pilote (HKMA)</td>
+                            <td>Licences limitées aux institutions financières.</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
 
     <section id="cbd">
         <div class="container">
-            <span class="sec-num">07 // MONNAIE SOUVERAINE</span>
-            <h2 style="font-size:3.5rem; margin-bottom:50px;">Stablecoins vs MNBC</h2>
-            <div class="grid">
+            <span class="mono" style="color: var(--primary);">07 // MONNAIE SOUVERAINE NUMÉRIQUE</span>
+            <h2 style="font-size: 3.5rem; margin-top: 20px; margin-bottom: 50px;">MNBC : La Réponse des États</h2>
+            
+            <div class="grid-2">
                 <div class="card">
                     <h3>L'Euro Numérique</h3>
-                    <p>Projet de la BCE pour 2027. Contrairement au stablecoin privé, il est une créance directe sur la Banque Centrale (risque nul).</p>
+                    <p>La BCE développe une version numérique de l'euro pour garantir que la monnaie publique reste accessible à l'ère du tout-numérique. Contrairement aux stablecoins, l'euro numérique est une <strong>créance directe sur la banque centrale</strong>, éliminant tout risque de défaut de l'émetteur.</p>
                 </div>
                 <div class="card">
-                    <h3>Enjeux Géopolitiques</h3>
-                    <p>La domination du dollar via les stablecoins privés pousse l'Europe et la Chine (e-CNY) à accélérer leurs propres versions numériques pour préserver leur souveraineté.</p>
+                    <h3>Concurrence et Coexistence</h3>
+                    <p>Les MNBC visent à limiter la domination des stablecoins privés et des Big Tech dans les paiements. Le défi est d'équilibrer l'innovation privée (stablecoins) avec la sécurité publique (MNBC). En 2026, on observe une spécialisation : les MNBC pour le détail, les stablecoins pour la DeFi et le B2B.</p>
                 </div>
+            </div>
+
+            <div class="analysis-block">
+                <h4>ENJEU : VIE PRIVÉE ET PROGRAMMABILITÉ</h4>
+                <p>L'un des freins majeurs à l'adoption des MNBC est la peur d'une surveillance étatique accrue. Les banques centrales travaillent sur des solutions de confidentialité matérielle pour permettre des transactions anonymes de faible montant, imitant le comportement des espèces physiques.</p>
             </div>
         </div>
     </section>
 
     <section id="per">
         <div class="container">
-            <span class="sec-num">08 // FUTUR DES CAPITAUX</span>
-            <h2 style="font-size:3.5rem; margin-bottom:50px;">Horizons 2030</h2>
-            <div class="grid">
+            <span class="mono" style="color: var(--primary);">08 // HORIZONS FUTURS</span>
+            <h2 style="font-size: 3.5rem; margin-top: 20px; margin-bottom: 50px;">L'Infrastructure de 2030</h2>
+            
+            <div class="grid-3">
                 <div class="card">
-                    <h3>Institutionnalisation</h3>
-                    <p>L'arrivée des fonds monétaires tokenisés (BlackRock BUIDL) transforme le stablecoin en un véritable produit d'épargne on-chain.</p>
+                    <h3>Tokenisation des RWA</h3>
+                    <p>L'avenir des stablecoins est lié à la tokenisation des actifs réels (Real World Assets). On verra des stablecoins adossés à des portefeuilles de prêts PME ou à des crédits carbone.</p>
                 </div>
                 <div class="card">
-                    <h3>Convergence MNBC-Stablecoins</h3>
-                    <p>Un futur hybride où les MNBC servent de couche de règlement interbancaire tandis que les stablecoins privés gèrent l'innovation et les paiements de détail.</p>
+                    <h3>Interopérabilité Native</h3>
+                    <p>Grâce à des protocoles comme CCTP, les stablecoins circuleront nativement entre les blockchains sans passer par des "bridges" risqués, unifiant la liquidité mondiale.</p>
+                </div>
+                <div class="card">
+                    <h3>IA et Streaming de Valeur</h3>
+                    <p>Les stablecoins permettront des micro-paiements seconde par seconde pour des services d'IA, automatisant totalement les flux financiers sans intervention humaine.</p>
                 </div>
             </div>
-            <div style="text-align:center; margin-top:100px; padding:80px; border:1px solid var(--border); background: linear-gradient(to bottom, #0f0f0f, #050505);">
-                <h2 style="color:var(--primary); font-size:2.5rem;">Infrastructure de Demain</h2>
-                <p style="max-width:800px; margin:30px auto; color:var(--text-muted); font-size:1.1rem;">Les stablecoins ont cessé d'être un simple outil de spéculation pour devenir le système d'exploitation de la finance mondiale.</p>
+
+            <div style="text-align: center; margin-top: 100px; border: 1px solid var(--border); padding: 80px; background: radial-gradient(circle, #1a0505 0%, #050505 100%);">
+                <h3 style="color: var(--primary); font-size: 2.5rem; margin-bottom: 20px;">Conclusion Stratégique</h3>
+                <p style="max-width: 800px; margin: 0 auto; color: var(--text-muted); font-size: 1.1rem;">Les stablecoins ont cessé d'être une simple curiosité cryptographique pour devenir l'épine dorsale de la finance numérique. Entre innovation privée et régulation publique, ils redéfinissent la vitesse et la structure de l'économie mondiale.</p>
             </div>
         </div>
     </section>
 
-    <section id="sepa">
+    <section id="banques">
         <div class="container">
-            <span class="sec-num">COMPARATIF RÉSEAUX</span>
-            <h2 style="margin-bottom:40px;">Bancaire vs Blockchain</h2>
-            <div class="grid">
+            <span class="mono" style="color: var(--primary);">ANNEXE // IMPACT BANCAIRE</span>
+            <h2 style="margin-bottom: 40px;">Disruption et Collaboration</h2>
+            <div class="grid-2">
                 <div class="card">
-                    <h3>SEPA Instant</h3>
-                    <p>Limité à l'Europe, horaires bancaires, frais fixes par transaction. Idéal pour le commerce local.</p>
+                    <h3>Désintermédiation Bancaire</h3>
+                    <p>Si les stablecoins deviennent le moyen privilégié d'épargne et de paiement, les banques commerciales pourraient perdre une source vitale de financement : les dépôts des particuliers. Cela pourrait forcer une refonte du modèle de crédit bancaire.</p>
                 </div>
                 <div class="card">
-                    <h3>Stablecoins (Solana/L2)</h3>
-                    <p>Mondial, 24/7/365, frais quasi-nuls. Permet des micro-paiements impossibles avec le système bancaire actuel.</p>
+                    <h3>Nouveaux Services de Garde</h3>
+                    <p>En réponse, les banques traditionnelles se transforment en dépositaires (Custodians) d'actifs numériques, assurant la sécurité des clés privées pour les grands comptes et les institutionnels.</p>
                 </div>
             </div>
+            <p style="margin-top: 40px; color: var(--text-muted); font-size: 0.8rem; text-align: center;">Document à usage académique uniquement. Les données de marché sont indicatives et basées sur les projections du premier trimestre 2026.</p>
         </div>
     </section>
-
 </main>
 
 <footer>
-    <div>STABLECOINS // ANALYSE ACADÉMIQUE // M2 FINANCE // IAE</div>
-    <div>SOURCE DATA : BCE, FED, BRI, COINGECKO, MAKERDAO</div>
+    <div>RDW SYSTEMS // STABLECOIN ARCHITECTURE // M2 FINANCE IAE 2026</div>
+    <div>DESIGNED BY AI FOR ACADEMIC EXCELLENCE // DATA SOURCES: BCE, FED, BIS, COINGECKO, MAKERDAO</div>
 </footer>
 
 <script>
+    // NAVIGATION HIGHLIGHTING LOGIC
     const sections = document.querySelectorAll("section");
-    const navLi = document.querySelectorAll(".nav-links a");
+    const navLinks = document.querySelectorAll(".nav-links a");
+
     window.onscroll = () => {
-        var current = "";
+        let current = "";
         sections.forEach((section) => {
             const sectionTop = section.offsetTop;
             if (pageYOffset >= sectionTop - 150) {
                 current = section.getAttribute("id");
             }
         });
-        navLi.forEach((a) => {
-            a.classList.remove("active");
-            if (a.getAttribute("href").includes(current)) {
-                a.classList.add("active");
+
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").includes(current)) {
+                link.classList.add("active");
             }
         });
     };
