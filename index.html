@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Stablecoins — Infrastructure & Géopolitique 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <style>
+        :root {
+            --rdw-red: #e31937;
+            --rdw-black: #000000;
+            --rdw-white: #ffffff;
+            --rdw-gray: #f9f9f9;
+            --rdw-border: #eeeeee;
+            --text-muted: #555555;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; } /* Permet le défilement fluide */
+        
+        body { font-family: 'Archivo', sans-serif; background: var(--rdw-white); color: var(--rdw-black); line-height: 1.6; }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: var(--rdw-white); border-bottom: 2px solid var(--rdw-black);
+            height: 75px; display: flex; align-items: center; padding: 0 4%;
+        }
+        .logo { font-weight: 800; font-size: 1.3rem; text-transform: uppercase; margin-right: 30px; border-right: 2px solid var(--rdw-black); padding-right: 20px; }
+        .logo span { color: var(--rdw-red); }
+
+        .nav-links { display: flex; gap: 5px; height: 100%; align-items: center; overflow-x: auto; list-style: none; }
+        .nav-links a {
+            text-decoration: none; padding: 0 15px; height: 100%; display: flex; align-items: center;
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; color: var(--rdw-black); transition: var(--transition);
+            border-bottom: 4px solid transparent;
+        }
+        .nav-links a:hover { color: var(--rdw-red); border-bottom-color: var(--rdw-red); }
+
+        /* --- LAYOUT --- */
+        section { padding: 100px 4% 60px; min-height: 100vh; border-bottom: 1px solid var(--rdw-border); }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* --- TYPOGRAPHIE --- */
+        h1 { font-size: clamp(3rem, 7vw, 5.5rem); text-transform: uppercase; line-height: 0.85; margin-bottom: 30px; font-weight: 800; }
+        h2 { font-size: 2.8rem; text-transform: uppercase; margin-bottom: 40px; border-left: 12px solid var(--rdw-red); padding-left: 25px; }
+        h3 { font-size: 1.4rem; text-transform: uppercase; margin-bottom: 15px; color: var(--rdw-red); }
+        .hero-tag { color: var(--rdw-red); font-family: 'Roboto Mono', monospace; font-size: 0.95rem; margin-bottom: 15px; display: block; }
+
+        /* --- COMPOSANTS --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: var(--rdw-border); border: 1px solid var(--rdw-border); margin-top: 40px; }
+        .card { background: white; padding: 50px; }
+        .card p { color: var(--text-muted); }
+
+        .highlight-box { background: var(--rdw-gray); padding: 50px; border-top: 5px solid var(--rdw-black); margin-bottom: 40px; }
+        
+        /* --- TABLES --- */
+        .table-wrapper { overflow-x: auto; margin-top: 40px; }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th { background: var(--rdw-black); color: white; padding: 20px; text-align: left; font-size: 0.8rem; text-transform: uppercase; }
+        td { padding: 20px; border-bottom: 1px solid var(--rdw-border); font-size: 1rem; }
+        .bg-red-soft { background: #fff5f5; font-weight: 600; }
+
+        footer { background: var(--rdw-black); color: white; padding: 80px 4%; text-align: center; }
+
+        @media (max-width: 800px) {
+            header { height: auto; flex-direction: column; padding: 15px; }
+            .logo { border-right: none; margin-bottom: 10px; }
+            .nav-links a { font-size: 0.65rem; padding: 10px 5px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">STABLE<span>CORE</span></div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#marches">Marchés</a></li>
+            <li><a href="#virements">Paiements</a></li>
+            <li><a href="#comparaison">Stable vs SEPA</a></li>
+            <li><a href="#regulation">Régulation</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="accueil" style="background: #000; color: #fff; display: flex; align-items: center;">
+        <div class="container">
+            <span class="hero-tag">// MISSION CRITICAL SYSTEMS</span>
+            <h1>L'ARCHITECTURE<br>DES STABLECOINS.</h1>
+            <p style="max-width: 700px; font-size: 1.4rem; opacity: 0.8; margin-bottom: 40px;">
+                Analyse de l'infrastructure financière programmable et de l'hégémonie du dollar numérique en 2026.
+            </p>
+            <a href="#marches" style="display:inline-block; background:var(--rdw-red); color:white; text-decoration:none; padding:18px 45px; font-weight:800; text-transform:uppercase;">Explorer les données</a>
+        </div>
+    </section>
+
+    <section id="marches">
+        <div class="container">
+            <h2>01. État du Marché Global</h2>
+            <div class="highlight-box">
+                <p style="font-size: 1.2rem;">Avec une capitalisation dépassant les <strong>180 milliards de dollars</strong>, les stablecoins représentent désormais la couche de liquidité primaire de l'écosystème blockchain.</p>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Actif</th>
+                            <th>Modèle</th>
+                            <th>Market Cap</th>
+                            <th>Part de Marché</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tether (USDT)</strong></td>
+                            <td>Fiat-Backé (Offshore)</td>
+                            <td>$120B+</td>
+                            <td>~68%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>USD Coin (USDC)</strong></td>
+                            <td>Fiat-Backé (Régulé US)</td>
+                            <td>$35B+</td>
+                            <td>~19%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DAI</strong></td>
+                            <td>Crypto-Backé (DeFi)</td>
+                            <td>$5B+</td>
+                            <td>~3%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PYUSD</strong></td>
+                            <td>PayPal (Corporate)</td>
+                            <td>$1B+</td>
+                            <td>< 1%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="virements" class="alt">
+        <div class="container">
+            <h2>02. Efficacité des Virements</h2>
+            <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px;">
+                Les stablecoins permettent d'éliminer le système de "banques correspondantes" propre au réseau SWIFT, réduisant les frictions de plusieurs jours à quelques secondes.
+            </p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Disponibilité Totale</h3>
+                    <p>Contrairement aux virements bancaires limités aux jours ouvrés, les stablecoins fonctionnent 24h/24, 7j/7, sans interruption.</p>
+                </div>
+                <div class="card">
+                    <h3>Règlement Instantané</h3>
+                    <p>Le transfert et le règlement (settlement) sont simultanés. Une fois le bloc validé, les fonds sont définitivement disponibles.</p>
+                </div>
+                <div class="card">
+                    <h3>Programmabilité</h3>
+                    <p>Possibilité d'intégrer des paiements sous condition (Escrow) via Smart Contracts, sans tiers de confiance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="comparaison">
+        <div class="container">
+            <h2>03. Stablecoins vs SEPA / SWIFT</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Indicateur</th>
+                            <th>Virement SEPA / SWIFT</th>
+                            <th class="bg-red-soft">Stablecoins (RDW Core)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Temps de traitement</strong></td>
+                            <td>1 à 5 jours ouvrés</td>
+                            <td class="bg-red-soft">15 secondes (Instant settlement)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Frais moyens</strong></td>
+                            <td>15€ - 50€ (International)</td>
+                            <td class="bg-red-soft">< $0.01 (Layer 2)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Intermédiaires</strong></td>
+                            <td>Banques correspondantes + Clearing</td>
+                            <td class="bg-red-soft">Pair-à-pair direct</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Portée</strong></td>
+                            <td>Limitée par zones bancaires</td>
+                            <td class="bg-red-soft">Mondiale (Internet natif)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="regulation" class="alt">
+        <div class="container">
+            <h2>04. Cadre Réglementaire MiCA</h2>
+            <div class="highlight-box">
+                <h3>Le Standard Européen</h3>
+                <p>Le règlement <strong>MiCA (Markets in Crypto-Assets)</strong> est devenu le cadre de référence mondial en 2024-2026, imposant des règles strictes sur les réserves de valeur.</p>
+            </div>
+            <div class="grid">
+                <div class="card" style="border-top: 4px solid var(--rdw-red);">
+                    <h3>Protection des Porteurs</h3>
+                    <p>Obligation pour les émetteurs de garantir un droit de rachat immédiat à la valeur nominale (1:1) en monnaie fiduciaire.</p>
+                </div>
+                <div class="card" style="border-top: 4px solid var(--rdw-red);">
+                    <h3>Audit des Réserves</h3>
+                    <p>Les actifs de réserve doivent être séparés des fonds propres de l'émetteur et audités mensuellement par des tiers indépendants.</p>
+                </div>
+                <div class="card" style="border-top: 4px solid var(--rdw-red);">
+                    <h3>Limitation des Intérêts</h3>
+                    <p>MiCA interdit le versement d'intérêts sur les stablecoins de type EMT (E-Money Tokens) pour éviter de déstabiliser les dépôts bancaires traditionnels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p style="font-weight: 800; font-size: 1.2rem; margin-bottom: 20px;">STABLECORE // REDWIRE GROUP</p>
+        <p style="font-family: 'Roboto Mono', monospace; font-size: 0.8rem; opacity: 0.6;">
+            © 2026 ANALYSE ACADÉMIQUE - M2 FINANCE. TOUS DROITS RÉSERVÉS.
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
